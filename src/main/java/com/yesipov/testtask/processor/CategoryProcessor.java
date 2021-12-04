@@ -20,4 +20,9 @@ public interface CategoryProcessor {
      * @return {@link List} of the results
      */
     List<String> getResult();
+
+    /**
+     * Clears all stored results
+     */
+    void clear();
 }

@@ -9,7 +9,9 @@ import java.util.List;
 public class Run {
     public static void main(String[] args) {
         List<String> data = DataParser.parseInputFile("data/input.txt");
+        List<String> data2 = DataParser.parseInputFile("data/input2.txt");
         CategoryResolver resolver = new CategoryResolver();
-        PrintUtils.printResolverResults(resolver.resolveCategories(data));
+        resolver.resolveCategories(data);
+        PrintUtils.printResolverResults(resolver.resolveCategories(data2));
     }
 }

@@ -10,10 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataParserTest {
 
     @Test
-    void parseInputFileTest() {
+    public void parseInputFileTest() {
         List<String> actual = DataParser.parseInputFile("testInput.txt");
         List<String> expected = Arrays.asList("CATEGORY1", "entry1", "entry2", "CATEGORY2", "entry3");
         assertNotNull(actual);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void parseInvalidFileTest() {
+        List<String> actual = DataParser.parseInputFile("invalid.txt");
+        assertTrue(actual.isEmpty());
     }
 }
