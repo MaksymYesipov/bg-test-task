@@ -30,7 +30,7 @@ class PrintUtilsTest {
     }
 
     @Test
-    void givenSystemOutRedirection_whenInvokePrintln_thenOutputCaptorSuccess() {
+    public void givenSystemOutRedirection_whenInvokePrintln_thenOutputCaptorSuccess() {
         Map<String, List<String>> inputData = initInputData();
         PrintUtils.printResolverResults(inputData);
 
