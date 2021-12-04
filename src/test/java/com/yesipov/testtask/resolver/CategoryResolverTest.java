@@ -76,6 +76,13 @@ class CategoryResolverTest {
         assertTrue(results.get(CATEGORY_2).isEmpty());
     }
 
+    @Test
+    public void resetTest() {
+        resolver.reset();
+        verify(category1Processor).clear();
+        verify(category2Processor).clear();
+    }
+
     private void verifyProcessorInsertions() {
         verify(category1Processor).add(eq("entry1"));
         verify(category1Processor).add(eq("entry2"));

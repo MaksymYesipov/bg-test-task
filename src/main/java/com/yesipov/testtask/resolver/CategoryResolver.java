@@ -22,6 +22,7 @@ public class CategoryResolver {
      * Default constructor
      */
     public CategoryResolver() {
+        resultsContainer = new HashMap<>();
         processorContainer = new HashMap<>();
         processorContainer.put(Constants.ANIMALS_CATEGORY_NAME, new AnimalsCategoryProcessor());
         processorContainer.put(Constants.NUMBERS_CATEGORY_NAME, new NumbersCategoryProcessor());
@@ -29,6 +30,7 @@ public class CategoryResolver {
     }
 
     public CategoryResolver(Map<String, CategoryProcessor> processorContainer) {
+        resultsContainer = new HashMap<>();
         this.processorContainer = processorContainer;
     }
 
