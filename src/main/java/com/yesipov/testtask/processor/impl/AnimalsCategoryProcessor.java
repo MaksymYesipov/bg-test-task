@@ -2,7 +2,10 @@ package com.yesipov.testtask.processor.impl;
 
 import com.yesipov.testtask.processor.CategoryProcessor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * {@link CategoryProcessor} implementation for animal category, includes sorting
