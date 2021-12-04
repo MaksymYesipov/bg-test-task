@@ -10,7 +10,6 @@ public class Run {
     public static void main(String[] args) {
         List<String> data = DataParser.parseInputFile("data/input.txt");
         CategoryResolver resolver = new CategoryResolver();
-        resolver.resolveCategories(data);
-        PrintUtils.printResolverResults(resolver);
+        PrintUtils.printResolverResults(resolver.resolveCategories(data));
     }
 }
