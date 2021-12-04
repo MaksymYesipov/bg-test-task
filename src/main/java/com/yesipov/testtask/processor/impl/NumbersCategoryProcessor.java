@@ -29,6 +29,11 @@ public class NumbersCategoryProcessor implements CategoryProcessor {
         return result;
     }
 
+    @Override
+    public void clear() {
+        numbers.clear();
+    }
+
     private void fillResultsList(List<String> result) {
         numbers.forEach((k, v) -> result.add(k + ": " + v));
     }

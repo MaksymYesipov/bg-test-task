@@ -26,4 +26,9 @@ public class AnimalsCategoryProcessor implements CategoryProcessor {
     public List<String> getResult() {
         return new ArrayList<>(animals);
     }
+
+    @Override
+    public void clear() {
+        animals.clear();
+    }
 }

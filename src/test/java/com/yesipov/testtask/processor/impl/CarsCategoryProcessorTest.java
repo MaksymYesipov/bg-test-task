@@ -1,6 +1,7 @@
 package com.yesipov.testtask.processor.impl;
 
 import com.yesipov.testtask.processor.CategoryProcessor;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,21 +10,21 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AnimalsCategoryProcessorTest {
+class CarsCategoryProcessorTest {
     private CategoryProcessor processor;
 
     @BeforeEach
     public void setUp() {
-        processor = new AnimalsCategoryProcessor();
+        processor = new CarsCategoryProcessor();
         initData();
     }
 
     @Test
-    public void testAddWithSorting() {
+    public void testReverseOrderAndHashing() {
+        List<String> expected = Arrays.asList(formattedResult("truck"), formattedResult("car"), formattedResult("auto"));
         List<String> result = processor.getResult();
         assertNotNull(result);
-        assertEquals(3, result.size());
-        assertEquals(Arrays.asList("bird", "cow", "sheep"), result);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -35,8 +36,12 @@ class AnimalsCategoryProcessorTest {
     }
 
     private void initData() {
-        processor.add("cow");
-        processor.add("sheep");
-        processor.add("bird");
+        processor.add("car");
+        processor.add("auto");
+        processor.add("truck");
+    }
+
+    private String formattedResult(String entry) {
+        return entry + " (" + DigestUtils.md5Hex(entry) + ")";
     }
 }
