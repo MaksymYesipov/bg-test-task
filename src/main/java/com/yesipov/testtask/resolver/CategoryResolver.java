@@ -6,9 +6,7 @@ import com.yesipov.testtask.processor.impl.AnimalsCategoryProcessor;
 import com.yesipov.testtask.processor.impl.CarsCategoryProcessor;
 import com.yesipov.testtask.processor.impl.NumbersCategoryProcessor;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -41,18 +39,21 @@ public class CategoryResolver {
      * Resolver instance will accumulate gathered results till <code>reset()</code> method invocation
      *
      * @param data parsed data
+     * @return {@link Map} with category name as key and appropriate processor result as value
      */
     public Map<String, List<String>> resolveCategories(List<String> data) {
         CategoryProcessor currentProcessor = null;
         for (String entry: data) {
-            CategoryProcessor processor = processorContainer.get(entry.toLowerCase());
-            if (processor != null) {
-                currentProcessor = processor;
-            } else if (currentProcessor != null) {
-                currentProcessor.add(entry);
-            }
+            currentProcessor = defineCurrentProcessor(entry, currentProcessor);
         }
         return generateResult();
+    }
+
+    private CategoryProcessor defineCurrentProcessor(String entry, CategoryProcessor currentProcessor) {
+        return new HashMap<>(processorContainer).computeIfAbsent(entry.toLowerCase(), e -> {
+            currentProcessor.add(e);
+            return currentProcessor;
+        });
     }
 
     /**
