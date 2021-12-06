@@ -19,7 +19,7 @@ public class NumbersCategoryProcessor implements CategoryProcessor {
 
     @Override
     public void add(String entry) {
-        numbers.compute(entry, (key, value) -> value != null ? ++value : 1);
+        numbers.merge(entry, 1, (oldValue, newValue) -> ++oldValue);
     }
 
     @Override
