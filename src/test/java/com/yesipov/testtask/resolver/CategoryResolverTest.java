@@ -21,8 +21,6 @@ class CategoryResolverTest {
     private static final String CATEGORY_2 = "category2";
     private static final List<String> TEST_DATA =
             Arrays.asList(CATEGORY_1, "entry1", "entry2", CATEGORY_2, "entry3", "entry4", CATEGORY_1, CATEGORY_2, "entry5");
-    private static final List<String> INVALID_TEST_DATA =
-            Arrays.asList("invalidEntry1", "invalidEntry2");
 
     @Spy
     private final Map<String, CategoryProcessor> processorContainer = new HashMap<>();
@@ -63,17 +61,6 @@ class CategoryResolverTest {
         assertEquals(2, results.size());
         assertEquals(3, results.get(CATEGORY_1).size());
         assertEquals(4, results.get(CATEGORY_2).size());
-    }
-
-    @Test
-    public void resolveCategoriesWithInvalidDataTest() {
-        when(category1Processor.getResult()).thenReturn(Collections.emptyList());
-        when(category2Processor.getResult()).thenReturn(Collections.emptyList());
-        Map<String, List<String>> results = resolver.resolveCategories(INVALID_TEST_DATA);
-        assertNotNull(results);
-        assertEquals(2, results.size());
-        assertTrue(results.get(CATEGORY_1).isEmpty());
-        assertTrue(results.get(CATEGORY_2).isEmpty());
     }
 
     @Test
